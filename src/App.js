@@ -1,13 +1,18 @@
 import { Home } from "./pages/Home";
 import { Login } from "./pages/login";
+import { Friends } from "./pages/friends";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { UserContextProvider } from "./components/context/userContext";
 function App() {
   return (
     <BrowserRouter basename="/">
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/" element={<Home />} />
-      </Routes>
+      <UserContextProvider>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/friends" element={<Friends />} />
+        </Routes>
+      </UserContextProvider>
     </BrowserRouter>
   );
 }

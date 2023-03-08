@@ -8,6 +8,8 @@ module.exports = {
       cardBg: "#14222C",
       btnInput: "#23313C",
       white: "#f1f5f9",
+      sideC: "#2563eb",
+      red: "#ef4444",
     },
   },
 

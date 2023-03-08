@@ -8,11 +8,11 @@ export const Add = () => {
           </div>{" "}
         </div>
         <form className="w-full" id="form">
-          <textarea className="textarea textarea-bordered textarea-sm w-full resize-none bg-btnInput"></textarea>
+          <textarea className="textarea  textarea-sm w-full resize-none bg-btnInput"></textarea>
         </form>
       </div>
       <div className="flex justify-end ">
-        <button class="btn btn-sm">Post</button>
+        <button className="btn btn-sm">Post</button>
       </div>
     </div>
   );
