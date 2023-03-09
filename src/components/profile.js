@@ -16,7 +16,6 @@ export const Profile = () => {
       if (res.status === 200) {
         res.json().then((user) => {
           setUser(user);
-          console.log(user);
         });
       } else if (res.status === 401) {
         //go to login

@@ -13,7 +13,6 @@ export const FriendRequest = ({ id }) => {
     }).then(async (res) => {
       if (res.status === 200) {
         res.json().then((user) => {
-          console.log(user);
           setUser(user);
         });
       } else if (res.status === 401) {
@@ -25,7 +24,10 @@ export const FriendRequest = ({ id }) => {
   }, []);
   return (
     Object.keys(user).length > 0 && (
-      <div className="flex gap-2 justify-between bg-cardBg my-4 m-auto p-2 max-w-screen-sm rounded-2xl border-solid">
+      <div
+        key={id}
+        className="flex gap-2 justify-between bg-cardBg my-4 m-auto p-2 max-w-screen-sm rounded-2xl border-solid"
+      >
         <div className="flex gap-2">
           <div className="avatar placeholder">
             <div className="bg-neutral-focus text-neutral-content rounded-full w-12">
