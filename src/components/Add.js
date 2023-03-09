@@ -1,6 +1,6 @@
 export const Add = () => {
   return (
-    <div className="m-auto my-4 flex flex-col p-4 max-w-screen-sm rounded-2xl  bg-cardBg">
+    <div className="m-auto my-10 flex flex-col p-4 max-w-screen-sm rounded-2xl  bg-cardBg">
       <div className="flex gap-4 items-center">
         <div className="avatar placeholder">
           <div className="bg-neutral-focus text-neutral-content rounded-full w-16">
