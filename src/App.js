@@ -4,6 +4,7 @@ import { Friends } from "./pages/friends";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { UserContextProvider } from "./components/context/userContext";
 import { Signup } from "./pages/signup";
+import { ProtectRoutes } from "./components/context/protectroutes";
 function App() {
   return (
     <BrowserRouter basename="/">

@@ -2,12 +2,16 @@ import { useEffect } from "react";
 import { UserContext } from "../components/context/userContext";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Logout } from "./logout/logout.js";
 export const Profile = () => {
+  const navigate = useNavigate();
   const { user, setUser } = useContext(UserContext);
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem("token"));
-
+    if (!token) {
+      navigate("/login");
+    }
     fetch("http://localhost:8080/user/owner", {
       method: "GET",
       mode: "cors",
@@ -20,7 +24,7 @@ export const Profile = () => {
           setUser(user);
         });
       } else if (res.status === 401) {
-        //go to login
+        navigate("/login");
       } else {
         //idk
       }

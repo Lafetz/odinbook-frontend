@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { Friend } from "../components/friends/friend";
 import { FriendRequest } from "../components/friends/friendRequest";
 import { PeopleList } from "../components/people/PeopleList";
+import { Modal } from "../components/logout/logoutModal";
 
 export const Friends = () => {
   const { user } = useContext(UserContext);
@@ -12,6 +13,7 @@ export const Friends = () => {
   useEffect(() => {}, [user]);
   return (
     <div>
+      <Modal />
       <div className="h-screen  bg-mainBg text-white px-5">
         <Profile />
 

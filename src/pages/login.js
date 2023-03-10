@@ -1,7 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "../components/context/userContext";
+import { useContext } from "react";
 export const Login = () => {
+  const navigate = useNavigate();
+  const { user, setUser } = useContext(UserContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -32,12 +36,13 @@ export const Login = () => {
       setLoading(false);
       setError(false);
       const token = await res.json();
-
       window.localStorage.setItem("token", JSON.stringify(token));
+      navigate("/");
     } else if (res.status === 401) {
       setLoading(false);
       setError(true);
     } else {
+      setLoading(false);
     }
   };
   return (

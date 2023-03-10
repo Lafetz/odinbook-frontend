@@ -1,11 +1,13 @@
-import { useLocation } from "react-router-dom";
-import { UserContext } from "../components/context/userContext";
 import { useContext } from "react";
+import { UserContext } from "../context/userContext";
+import { useNavigate } from "react-router-dom";
 export const Modal = () => {
   const { user, setUser } = useContext(UserContext);
-  const location = useLocation();
+  const navigate = useNavigate();
   const logout = () => {
     window.localStorage.removeItem("token");
+    setUser({});
+    navigate("/login");
   };
   return (
     <>
@@ -17,7 +19,9 @@ export const Modal = () => {
           htmlFor=""
         >
           <h1 className="text-lg font-bold w-fit text-white">Are you sure?</h1>
-          <button className="btn bg-red w-fit">Log out</button>
+          <button onClick={logout} className="btn bg-red w-fit">
+            Log out
+          </button>
         </label>
       </label>
     </>

@@ -13,7 +13,6 @@ export const Person = ({ person }) => {
       setRequestr(r);
       setRequesty(y);
       if (r == false && y == false) {
-        console.log(r, y);
         setRequest(true);
       }
     }
@@ -39,7 +38,7 @@ export const Person = ({ person }) => {
       });
   };
   return (
-    <div className="flex gap-2 justify-between bg-cardBg m-auto p-2 max-w-screen-sm rounded-2xl border-solid">
+    <div className="flex gap-2 justify-between bg-cardBg m-auto p-2 max-w-screen-sm rounded-2xl border-solid w-full">
       <div className="flex gap-2">
         <div className="avatar placeholder">
           <div className="bg-neutral-focus text-neutral-content rounded-full w-12">
