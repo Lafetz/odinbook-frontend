@@ -1,34 +1,34 @@
+import { useEffect, useState } from "react";
+import { Person } from "./person";
+
 export const PeopleList = () => {
+  const [people, setPeople] = useState(null);
+  useEffect(() => {
+    const token = JSON.parse(localStorage.getItem("token"));
+    fetch("http://localhost:8080/user", {
+      method: "GET",
+      mode: "cors",
+      headers: {
+        Authorization: "Bearer " + token.token,
+      },
+    }).then((res) => {
+      if (res.status === 200) {
+        res.json().then((users) => {
+          setPeople(users);
+        });
+      } else if (res.status === 401) {
+        //go to login
+      } else {
+        //idk
+      }
+    });
+  }, []);
   return (
-    <div className="bg-cardBg my-4 m-auto p-4 max-w-screen-sm rounded-2xl ">
-      <h1 className="m-auto my-2 w-fit font-bold">Find People</h1>
-      <form className="m-auto w-fit">
-        <div className="form-control">
-          <div className="input-group">
-            <input
-              type="text"
-              placeholder="Search…"
-              className="input input-bordered"
-            />
-            <button className="btn btn-square">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </form>
+    <div className="bg-cardBg my-4 m-auto py-4 max-w-screen-sm rounded-2xl ">
+      {people &&
+        people.map((user) => {
+          return <Person person={user} />;
+        })}
     </div>
   );
 };

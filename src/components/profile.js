@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { UserContext } from "../components/context/userContext";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { Logout } from "./logout/logout.js";
 export const Profile = () => {
   const { user, setUser } = useContext(UserContext);
   useEffect(() => {
@@ -69,7 +70,7 @@ export const Profile = () => {
               />
             </svg>
           </div>
-          <Link to="friends">
+          <Link to="/friends">
             {" "}
             <div className="hover:bg-sideC p-1 rounded-md">
               <svg
@@ -92,13 +93,29 @@ export const Profile = () => {
             </div>
           </Link>
 
-          <div className="flex gap-2 items-center bg-sideC p-2 rounded-2xl ">
-            <div className="avatar placeholder">
-              <div className="bg-neutral-focus text-neutral-content rounded-full w-8">
-                <span className="text-xs">AA</span>
+          {""}
+          <div className="dropdown dropdown-end">
+            <label tabIndex={0} className=" ">
+              <div className="flex gap-2 items-center bg-sideC p-1 rounded-2xl ">
+                <div className="avatar placeholder">
+                  <div className="bg-neutral-focus text-neutral-content rounded-full w-8">
+                    <span className="text-xs">AA</span>
+                  </div>
+                </div>
+                <span className="font-semibold">{user.Name}</span>
               </div>
-            </div>
-            <span className="font-semibold">{user.Name}</span>
+            </label>
+            <ul
+              tabIndex={0}
+              className="dropdown-content menu py-2 px-3 rounded-box w-52 bg-cardBg"
+            >
+              <li className="hover:bg-btnInput">
+                <a>Settings</a>
+              </li>
+              <li className="hover:bg-btnInput">
+                <Logout />
+              </li>
+            </ul>
           </div>
         </div>
       </div>
