@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Post } from "./Post";
 import { useEffect } from "react";
+import { Post } from "./Post";
 export const Posts = () => {
   const [posts, setPosts] = useState([]);
   useEffect(() => {

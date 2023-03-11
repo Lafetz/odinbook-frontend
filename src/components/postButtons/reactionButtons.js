@@ -1,13 +1,22 @@
 import { LikeBtn } from "./likeBtn";
 
-export const ReactionBtns = ({ post }) => {
-  //w-full justify-between
+export const ReactionBtns = ({ post, setShow, show }) => {
+  const btnClick = () => {
+    if (show) {
+      setShow(false);
+      return;
+    }
+    setShow(true);
+  };
   return (
-    <div className="flex my-2 gap-1 ">
+    <div className="flex my-2 justify-around max-w-xs gap-1">
       <LikeBtn post={post} />
-
-      <button className="btn btn-xs">Comment</button>
-      <button className="btn btn-xs">Share</button>
+      <button
+        onClick={btnClick}
+        className="w-full hover:bg-sideC py-1 rounded-xl bg-mainBg"
+      >
+        comment
+      </button>
     </div>
   );
 };

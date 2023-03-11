@@ -1,6 +1,6 @@
 import { Profile } from "../components/profile";
 import { Add } from "../components/Add";
-import { Posts } from "../components/posts";
+import { Posts } from "../components/post/posts";
 import { Modal } from "../components/logout/logoutModal";
 
 export const Home = () => {

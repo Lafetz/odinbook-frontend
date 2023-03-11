@@ -1,5 +1,8 @@
-import { ReactionBtns } from "./postButtons/reactionButtons";
+import { ReactionBtns } from "../postButtons/reactionButtons";
+import { useState } from "react";
+import { AddComment } from "../postButtons/addComment";
 export const Post = ({ post }) => {
+  const [show, setShow] = useState(true);
   return (
     <div className=" bg-cardBg my-4 m-auto py-4 max-w-screen-sm px-1 rounded-2xl border-solid flex gap-1">
       <div className="avatar placeholder h-16">
@@ -41,7 +44,8 @@ export const Post = ({ post }) => {
             <span>{post.likedby.length} people liked this</span>
           )}
         </div>
-        <ReactionBtns post={post} />
+        <ReactionBtns post={post} setShow={setShow} show={show} />
+        {show && <AddComment />}
       </div>
     </div>
   );

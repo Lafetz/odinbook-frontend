@@ -43,12 +43,18 @@ export const LikeBtn = ({ post }) => {
   return (
     <>
       {post.likedBy.includes(user._id) && (
-        <button onClick={unlike} className="btn btn-xs">
+        <button
+          onClick={unlike}
+          className="w-full hover:bg-red py-1 rounded-xl bg-mainBg"
+        >
           unlike
         </button>
       )}
       {!post.likedBy.includes(user._id) && (
-        <button onClick={like} className="btn btn-xs">
+        <button
+          onClick={like}
+          className="w-full hover:bg-sideC py-1 rounded-xl bg-mainBg"
+        >
           like
         </button>
       )}
