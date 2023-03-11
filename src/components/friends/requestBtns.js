@@ -30,7 +30,9 @@ export const RequestBtns = ({ id }) => {
       body: JSON.stringify({ id: id }),
     })
       .then((res) => {
-        return res.json();
+        if (res.status === 200) {
+          console.log("rejected");
+        }
       })
       .then((x) => {
         console.log(x);

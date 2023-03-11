@@ -31,7 +31,7 @@ export const Profile = () => {
     });
   }, []);
   return (
-    <div className="h-16 border-b-2 border-white p-4">
+    <div className="py-4 border-b-2 border-white ">
       <div className="max-w-screen-md m-auto h-full flex justify-between items-center">
         <Link to="/">
           <div className="hover:bg-sideC p-1 rounded-md">

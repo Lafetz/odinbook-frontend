@@ -14,7 +14,6 @@ export const Friend = ({ id }) => {
     }).then(async (res) => {
       if (res.status === 200) {
         res.json().then((user) => {
-          console.log(user);
           setUser(user);
         });
       } else if (res.status === 401) {

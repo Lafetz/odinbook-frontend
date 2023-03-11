@@ -16,7 +16,6 @@ export const Posts = () => {
       if (res.status === 200) {
         res.json().then((posts) => {
           setPosts(posts);
-          console.log(posts);
         });
       } else if (res.status === 401) {
         //go to login
@@ -28,7 +27,7 @@ export const Posts = () => {
   return (
     <>
       {posts.map((post) => {
-        <Post key={post._id} />;
+        return <Post key={post._id} post={post} />;
       })}
     </>
   );

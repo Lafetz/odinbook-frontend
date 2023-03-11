@@ -5,9 +5,9 @@ import { Modal } from "../components/logout/logoutModal";
 
 export const Home = () => {
   return (
-    <div>
+    <div className="">
       <Modal />
-      <div className="h-screen bg-mainBg text-white px-5">
+      <div className="h-screen bg-mainBg text-white px-3">
         <Profile />
         <Add />
         <Posts />
