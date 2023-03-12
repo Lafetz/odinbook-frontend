@@ -6,14 +6,19 @@ export const Person = ({ person }) => {
   const [request, setRequest] = useState(false);
   const [requestr, setRequestr] = useState(false);
   const [requesty, setRequesty] = useState(false);
+  const [requestf, setRequestf] = useState(false);
   useEffect(() => {
     if (Object.keys(user).length > 0) {
       const r = user.friendRequest.includes(person._id); //user sent request
       const y = person.friendRequest.includes(user._id); //request sent
+      const f = person.friendList.includes(user._id);
       setRequestr(r);
       setRequesty(y);
+      setRequestf(f);
       if (r == false && y == false) {
-        setRequest(true);
+        if (!f) {
+          setRequest(true);
+        }
       }
     }
   }, [user]);
@@ -47,7 +52,7 @@ export const Person = ({ person }) => {
         </div>
         <div>
           <div className="">{person.Name}</div>
-          <div className="font-light">{person.username}</div>
+          <div className="font-light">@{person.username}</div>
         </div>
       </div>
       {request && (
@@ -61,6 +66,7 @@ export const Person = ({ person }) => {
       {requesty && (
         <button className="btn  btn-sm bg-sideC ">Request sent</button>
       )}
+      {requestf && <button className="btn  btn-sm bg-sideC ">Friends</button>}
     </div>
   );
 };

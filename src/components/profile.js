@@ -114,9 +114,6 @@ export const Profile = () => {
               className="dropdown-content menu py-2 px-3 rounded-box w-52 bg-cardBg"
             >
               <li className="hover:bg-btnInput">
-                <a>Settings</a>
-              </li>
-              <li className="hover:bg-btnInput">
                 <Logout />
               </li>
             </ul>

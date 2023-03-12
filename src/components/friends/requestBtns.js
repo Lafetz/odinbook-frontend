@@ -49,4 +49,3 @@ export const RequestBtns = ({ id }) => {
     </div>
   );
 };
-//credentials: "include",

@@ -1,6 +1,7 @@
 import { ReactionBtns } from "../postButtons/reactionButtons";
 import { useState } from "react";
 import { AddComment } from "../postButtons/addComment";
+import { Link } from "react-router-dom";
 export const Post = ({ post }) => {
   const [show, setShow] = useState(false);
   return (
@@ -14,8 +15,12 @@ export const Post = ({ post }) => {
         <div className="flex flex-col gap-2 w-full">
           <div className="flex justify-between">
             <div>
-              <span className="font-semibold ">{post.userId.Name}</span>
-              <div className="font-light text-sm">@{post.userId.username}</div>
+              <Link to={`/profile/${post.userId._id}`} state={post.userId}>
+                <span className="font-semibold ">{post.userId.Name}</span>
+                <div className="font-light text-sm">
+                  @{post.userId.username}
+                </div>
+              </Link>
             </div>
 
             <div className="font-light text-sm">few minutes </div>
