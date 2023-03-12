@@ -54,7 +54,7 @@ export const Profile = () => {
           </div>
         </Link>
 
-        <div className="flex gap-6 h-9">
+        <div className="flex gap-4 h-9">
           <div className="hover:bg-sideC p-1 rounded-md">
             <svg
               xmlns="http://www.w3.org/2000/svg"

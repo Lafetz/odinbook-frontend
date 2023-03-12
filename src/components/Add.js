@@ -44,9 +44,7 @@ export const Add = () => {
             className="textarea  textarea-sm w-full resize-none bg-btnInput"
             value={post}
             onChange={postChange}
-          >
-            {" "}
-          </textarea>
+          ></textarea>
         </form>
       </div>
       <div className="flex justify-end ">

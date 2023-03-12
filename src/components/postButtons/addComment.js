@@ -1,16 +1,37 @@
 import { useState } from "react";
 import { Comments } from "./showComments";
 
-export const AddComment = () => {
+export const AddComment = ({ post }) => {
   const [comment, setComment] = useState("");
   const [loading, setLoading] = useState("");
   const commentChange = (e) => {
     setComment(e.target.value);
   };
-  const AddComment = () => {};
+
+  const AddComment = (e) => {
+    e.preventDefault();
+    const token = JSON.parse(localStorage.getItem("token"));
+    fetch(`http://localhost:8080/posts/${post._id}/comments`, {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token.token,
+      },
+      body: JSON.stringify({ content: comment }),
+    })
+      .then((res) => {
+        if (res.status === 200) {
+        }
+      })
+      .then((x) => {
+        console.log(x);
+      });
+  };
   return (
-    <div className="pr-4">
-      <form className="flex ">
+    <div className="max-w-screen-sm m-auto">
+      <form className="flex w-11/12 m-auto">
         <textarea
           onChange={commentChange}
           value={comment}
@@ -23,7 +44,8 @@ export const AddComment = () => {
           Add
         </button>
       </form>
+      <Comments post={post} />
     </div>
   );
 };
-//<Comments comments={posts.comment} />
+//
