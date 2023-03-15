@@ -1,8 +1,12 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { UserContext } from "../context/userContext";
-export const Comment = ({ comment, post }) => {
+export const Comment = ({ comment, post, index, setComments, comments }) => {
   const { user } = useContext(UserContext);
-  const remove = () => {
+  const [loading, setLoading] = useState(false);
+  const remove = (e) => {
+    e.target.disabled = true;
+
+    setLoading(true);
     const token = JSON.parse(localStorage.getItem("token"));
     fetch(`http://localhost:8080/posts/${post._id}/comments/${comment._id}`, {
       method: "DELETE",
@@ -10,18 +14,19 @@ export const Comment = ({ comment, post }) => {
       headers: {
         Authorization: "Bearer " + token.token,
       },
-    })
-      .then((res) => {
-        if (res.status === 200) {
-          console.log("rejected");
-        }
-      })
-      .then((x) => {
-        console.log(x);
-      });
+    }).then((res) => {
+      e.target.disabled = true;
+      setLoading(false);
+      if (res.status === 200) {
+        setComments([
+          ...comments.slice(0, index),
+          ...comments.slice(index + 1),
+        ]);
+      }
+    });
   };
   return (
-    <div className="flex gap-2 rounded-2xl bg-btnInput w-full  px-2 py-1">
+    <div className="flex gap-2 rounded-2xl bg-btnInput w-full  px-2 py-1 ">
       <div className="avatar placeholder h-14">
         <div className="bg-neutral-focus text-neutral-content rounded-full w-14">
           <span className="text-sm">x</span>

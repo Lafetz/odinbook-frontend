@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { RequestBtns } from "./requestBtns";
 export const FriendRequest = ({ id }) => {
   const [user, setUser] = useState({});
@@ -35,8 +36,10 @@ export const FriendRequest = ({ id }) => {
             </div>
           </div>
           <div>
-            <div className="">{user.Name}</div>
-            <div className="font-light">@{user.username}</div>
+            <Link to={`/profile/${user._id}`} state={user}>
+              <div className="">{user.Name}</div>
+              <div className="font-light">@{user.username}</div>
+            </Link>
           </div>
         </div>
         <RequestBtns id={user._id} />

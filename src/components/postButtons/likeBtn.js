@@ -1,10 +1,12 @@
 import { useContext } from "react";
+import { PostsContext } from "../../pages/Home";
 import { UserContext } from "../context/userContext";
 
 export const LikeBtn = ({ post }) => {
-  console.log(post);
   const { user, setUser } = useContext(UserContext);
-  const like = () => {
+  const { posts, setPosts } = useContext(PostsContext);
+  const like = (e) => {
+    e.target.disabled = true;
     const token = JSON.parse(localStorage.getItem("token"));
     fetch(`http://localhost:8080/posts/${post._id}/like`, {
       method: "POST",
@@ -14,12 +16,22 @@ export const LikeBtn = ({ post }) => {
       },
     })
       .then((res) => {
+        e.target.disabled = false;
         if (res.status === 200) {
-          console.log("rejected");
+          return res.json();
         }
       })
-      .then((x) => {
-        console.log(x);
+      .then((post) => {
+        const newposts = posts.map((oldPost) => {
+          if (oldPost._id == post._id) {
+            return post;
+          } else {
+            return oldPost;
+          }
+        });
+        setPosts(newposts);
+
+        // );
       });
   };
   const unlike = () => {
@@ -33,11 +45,18 @@ export const LikeBtn = ({ post }) => {
     })
       .then((res) => {
         if (res.status === 200) {
-          console.log("rejected");
+          return res.json();
         }
       })
-      .then((x) => {
-        console.log(x);
+      .then((post) => {
+        const newposts = posts.map((oldPost) => {
+          if (oldPost._id == post._id) {
+            return post;
+          } else {
+            return oldPost;
+          }
+        });
+        setPosts(newposts);
       });
   };
   return (
@@ -45,7 +64,7 @@ export const LikeBtn = ({ post }) => {
       {post.likedBy.includes(user._id) && (
         <button
           onClick={unlike}
-          className="w-full hover:bg-red py-1 rounded-xl bg-mainBg"
+          className="w-full bg-sideC hover:bg-red py-1 rounded-xl "
         >
           unlike
         </button>

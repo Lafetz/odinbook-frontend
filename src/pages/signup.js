@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 export const Signup = () => {
+  const [loading, setLoading] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
@@ -19,6 +20,7 @@ export const Signup = () => {
   };
 
   const submit = async (e) => {
+    setLoading(true);
     e.preventDefault();
     const signupData = {
       Name: name,
@@ -35,6 +37,7 @@ export const Signup = () => {
       },
       body: JSON.stringify(signupData),
     });
+    setLoading(false);
     if (res.status === 200) {
       console.log("user created");
     } else if (res.status === 401) {
@@ -50,9 +53,10 @@ export const Signup = () => {
               <span className="label-text text-white">Email</span>
             </label>
             <input
+              required
               id="email"
               onChange={emailChange}
-              type="text"
+              type="email"
               placeholder="email"
               className="input input-bordered bg-btnInput"
             />
@@ -62,6 +66,7 @@ export const Signup = () => {
               <span className="label-text text-white">name</span>
             </label>
             <input
+              required
               id="name"
               onChange={nameChange}
               type="text"
@@ -74,6 +79,7 @@ export const Signup = () => {
               <span className="label-text text-white">username</span>
             </label>
             <input
+              required
               id="username"
               type="text"
               onChange={usernameChange}
@@ -86,6 +92,7 @@ export const Signup = () => {
               <span className="label-text text-white">Password</span>
             </label>
             <input
+              required
               onChange={passwordChange}
               type="password"
               placeholder="password"
@@ -94,7 +101,16 @@ export const Signup = () => {
             />
           </div>
           <div className="form-control mt-6">
-            <button className="btn bg-sideC  text-white">Login</button>
+            {!loading && (
+              <button className="btn bg-sideC  hover:bg-sideD  text-white">
+                Sign up
+              </button>
+            )}
+            {loading && (
+              <button className="btn bg-sideC  hover:bg-sideD loading text-white">
+                Sign up
+              </button>
+            )}
           </div>
         </form>
         <span className="">

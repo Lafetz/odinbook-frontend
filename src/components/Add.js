@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { PostsContext } from "../pages/Home";
 
 export const Add = () => {
+  const { posts, setPosts } = useContext(PostsContext);
   const [post, setPost] = useState(" ");
   const [loading, setLoading] = useState(false);
   const postChange = (e) => {
@@ -18,12 +20,19 @@ export const Add = () => {
         Authorization: "Bearer " + token.token,
       },
       body: JSON.stringify({ content: post }),
-    }).then((res) => {
-      setLoading(false);
-      if (res.status == 200) {
-        setPost("");
-      }
-    });
+    })
+      .then((res) => {
+        console.log("res", res);
+        setLoading(false);
+        if (res.status == 200 && res.status !== undefined) {
+          setPost("");
+          return res.json();
+        } else {
+        }
+      })
+      .then((post) => {
+        setPosts([post, ...posts]);
+      });
   };
   return (
     <div className="m-auto my-10 flex flex-col p-4 max-w-screen-sm rounded-2xl  bg-cardBg">

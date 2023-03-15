@@ -48,12 +48,13 @@ export const Login = () => {
   return (
     <div className="w-full h-screen flex justify-center items-center bg-mainBg text-white">
       <div className="bg-cardBg p-6 rounded-2xl text-white flex flex-col gap-2">
-        <form onSubmit={submitForm}>
+        <form onSubmit={submitForm} className="flex flex-col gap-2">
           <div className="form-control">
             <label htmlFor="username" className="label">
-              <span className="label-text text-white">Email</span>
+              <span className="label-text text-white">Email:</span>
             </label>
             <input
+              required
               onChange={usernameChange}
               id="username"
               type="text"
@@ -63,23 +64,28 @@ export const Login = () => {
           </div>
           <div className="form-control">
             <label htmlFor="password" className="label">
-              <span className="label-text text-white">Password</span>
+              <span className="label-text text-white">Password:</span>
             </label>
             <input
+              required
               onChange={passwordChange}
-              type="text"
+              type="password"
               placeholder="password"
               id="password"
               className="input input-bordered bg-btnInput"
             />
           </div>
-          {error && <span>incorrect username or password</span>}
+          {error && (
+            <span className=" text-red">incorrect username or password</span>
+          )}
           <div className="form-control mt-6">
             {!loading && (
-              <button className="btn btn-primary text-white">Login</button>
+              <button className="btn bg-sideC hover:bg-sideD text-white">
+                Login
+              </button>
             )}
             {loading && (
-              <button className="btn btn-primary loading text-white">
+              <button className="btn bg-sideC hover:bg-sideD loading text-white">
                 Login
               </button>
             )}

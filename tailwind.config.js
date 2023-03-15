@@ -9,6 +9,7 @@ module.exports = {
       btnInput: "#23313C",
       white: "#f1f5f9",
       sideC: "#2563eb",
+      sideD: "#1d4ed8",
       red: "#ef4444",
     },
   },

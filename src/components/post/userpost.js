@@ -1,14 +1,12 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { useEffect } from "react";
-import { PostsContext } from "../../pages/Home";
 import { Post } from "./Post";
-export const Posts = () => {
-  const { posts, setPosts } = useContext(PostsContext);
-
+export const UserPosts = ({ person }) => {
+  const [posts, setPosts] = useState([]);
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem("token"));
 
-    fetch("http://localhost:8080/posts", {
+    fetch(`http://localhost:8080/posts/${person._id}`, {
       method: "Get",
       mode: "cors",
       headers: {

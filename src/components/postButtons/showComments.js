@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Comment } from "./comment";
-export const Comments = ({ post }) => {
-  const [comments, setComments] = useState([]);
+export const Comments = ({ post, comments, setComments }) => {
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem("token"));
 
@@ -25,8 +24,17 @@ export const Comments = ({ post }) => {
   }, []);
   return (
     <div className="flex flex-col gap-2 mt-2">
-      {comments.map((comment) => {
-        return <Comment key={comment._id} comment={comment} post={post} />;
+      {comments.map((comment, i) => {
+        return (
+          <Comment
+            key={comment._id}
+            comment={comment}
+            post={post}
+            index={i}
+            comments={comments}
+            setComments={setComments}
+          />
+        );
       })}
     </div>
   );

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export const Friend = ({ id }) => {
   const token = JSON.parse(localStorage.getItem("token"));
@@ -54,8 +55,11 @@ export const Friend = ({ id }) => {
             </div>
           </div>
           <div>
-            <div className="">{user.Name}</div>
-            <div className="font-light">@{user.username}</div>
+            <Link to={`/profile/${user._id}`} state={user}>
+              {" "}
+              <div className="">{user.Name}</div>
+              <div className="font-light">@{user.username}</div>
+            </Link>
           </div>
         </div>
         <button className="btn  btn-sm bg-red" onClick={remove}>

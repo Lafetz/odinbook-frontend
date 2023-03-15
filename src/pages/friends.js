@@ -14,22 +14,28 @@ export const Friends = () => {
   return (
     <div>
       <Modal />
-      <div className="h-screen  bg-mainBg text-white px-5">
+      <div className="pb-5 min-h-screen bg-mainBg text-white px-5">
         <Profile />
 
-        <div className="divider m-10">Friend Requests</div>
+        <div className="divider m-10  before:bg-sideC after:bg-sideC ">
+          Friend Requests
+        </div>
 
         {Object.keys(user).length > 0 &&
           user.friendRequest.map((request, i) => {
             return <FriendRequest key={request + i} id={request} />;
           })}
-        <div className="divider m-10">Friends</div>
+        <div className="divider m-10 before:bg-sideC after:bg-sideC  ">
+          Friends
+        </div>
 
         {Object.keys(user).length > 0 &&
           user.friendList.map((request, i) => {
             return <Friend key={request + i} id={request} />;
           })}
-        <div className="divider m-10">People</div>
+        <div className="divider m-10 before:bg-sideC after:bg-sideC ">
+          People
+        </div>
         <PeopleList />
       </div>
     </div>

@@ -113,7 +113,7 @@ export const Profile = () => {
               tabIndex={0}
               className="dropdown-content menu py-2 px-3 rounded-box w-52 bg-cardBg"
             >
-              <li className="hover:bg-btnInput">
+              <li className="hover:bg-mainBg">
                 <Logout />
               </li>
             </ul>

@@ -1,5 +1,6 @@
 import { UserContext } from "../context/userContext";
 import { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export const Person = ({ person }) => {
   const { user, setUser } = useContext(UserContext);
@@ -51,8 +52,10 @@ export const Person = ({ person }) => {
           </div>
         </div>
         <div>
-          <div className="">{person.Name}</div>
-          <div className="font-light">@{person.username}</div>
+          <Link to={`/profile/${user._id}`} state={person}>
+            <div className="">{person.Name}</div>
+            <div className="font-light">@{person.username}</div>
+          </Link>
         </div>
       </div>
       {request && (
