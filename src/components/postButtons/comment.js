@@ -33,20 +33,25 @@ export const Comment = ({ comment, post, index, setComments, comments }) => {
           <span className="text-sm">x</span>
         </div>
       </div>
-      <div className="w-full">
-        <div className="hover:underline">
+      <div className="w-full ">
+        <div className="flex justify-between">
           {" "}
           <Link to={`/profile/${post.userId._id}`} state={post.userId}>
-            <div className="flex justify-between">
+            <div className="hover:underline flex justify-between">
               <span className="font-semibold">{comment.userId.Name}</span>
-              {comment.userId._id == user._id && (
-                <button className="btn btn-xs bg-red" onClick={remove}>
-                  remove
-                </button>
-              )}
             </div>
-            <div className="font-light h-fit">@{comment.userId.username}</div>
+            <div className="hover:underline font-light h-fit">
+              @{comment.userId.username}
+            </div>
           </Link>
+          {comment.userId._id == user._id && (
+            <button
+              className="btn btn-xs bg-red hover:bg-redD"
+              onClick={remove}
+            >
+              remove
+            </button>
+          )}
         </div>
         <div>{comment.content}</div>
       </div>

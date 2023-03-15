@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Person } from "./person";
+import { PersonState } from "./personState";
 import { UserContext } from "../context/userContext";
 import { useContext } from "react";
 export const PeopleList = () => {
@@ -20,7 +20,6 @@ export const PeopleList = () => {
       }).then((res) => {
         if (res.status === 200) {
           res.json().then((users) => {
-            console.log(users);
             setPeople(users);
           });
         } else if (res.status === 401) {
@@ -30,20 +29,13 @@ export const PeopleList = () => {
         }
       });
     }
-  }, []);
+  }, [user]);
 
   return (
     <div className=" my-4 m-auto py-4 max-w-screen-sm rounded-2xl flex flex-col gap-2 ">
       {people &&
         people.map((user) => {
-          return (
-            <Person
-              key={user._id}
-              person={user}
-              setPeople={setPeople}
-              people={people}
-            />
-          );
+          return <PersonState key={user._id} personState={user} />;
         })}
     </div>
   );

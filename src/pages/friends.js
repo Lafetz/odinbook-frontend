@@ -6,6 +6,7 @@ import { Friend } from "../components/friends/friend";
 import { FriendRequest } from "../components/friends/friendRequest";
 import { PeopleList } from "../components/people/PeopleList";
 import { Modal } from "../components/logout/logoutModal";
+import { Link } from "react-router-dom";
 
 export const Friends = () => {
   const [owner, setOwner] = useState({});
@@ -34,9 +35,16 @@ export const Friends = () => {
   return (
     <div>
       <Modal />
-      <div className="pb-5 min-h-screen bg-mainBg text-white px-5">
+      <div className="pb-5 min-h-screen bg-mainBg text-white px-5 ">
         <Profile />
-
+        <div className="m-auto w-fit">
+          <Link
+            to="/people"
+            className=" bg-sideC hover:bg-sideD btn mt-5 w-fit "
+          >
+            Find People
+          </Link>
+        </div>
         <div className="divider m-10  before:bg-sideC after:bg-sideC ">
           Friend Requests
         </div>

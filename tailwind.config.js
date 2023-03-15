@@ -11,6 +11,7 @@ module.exports = {
       sideC: "#2563eb",
       sideD: "#1d4ed8",
       red: "#ef4444",
+      redD: "#991b1b",
     },
   },
 

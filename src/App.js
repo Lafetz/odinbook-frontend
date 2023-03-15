@@ -4,9 +4,9 @@ import { Friends } from "./pages/friends";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { UserContextProvider } from "./components/context/userContext";
 import { Signup } from "./pages/signup";
-import { ProtectRoutes } from "./components/context/protectroutes";
-import { Profile, UserProfile } from "./pages/profile";
 
+import { UserProfile } from "./pages/profile";
+import { FindPeople } from "./pages/findPeople";
 function App() {
   return (
     <BrowserRouter basename="/">
@@ -16,7 +16,7 @@ function App() {
           <Route path="/profile/:id" element={<UserProfile />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/" element={<Home />} />
-
+          <Route path="/people" element={<FindPeople />} />
           <Route path="/friends" element={<Friends />} />
         </Routes>
       </UserContextProvider>
