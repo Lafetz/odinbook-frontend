@@ -2,11 +2,12 @@ import { ReactionBtns } from "../postButtons/reactionButtons";
 import { useState } from "react";
 import { AddComment } from "../postButtons/addComment";
 import { Link } from "react-router-dom";
+import formatDistance from "date-fns/formatDistance";
 export const Post = ({ post }) => {
   const [show, setShow] = useState(false);
   return (
     <div>
-      <div className=" bg-cardBg my-4 m-auto py-4 max-w-screen-sm px-1 rounded-2xl border-solid flex gap-1">
+      <div className=" bg-cardBg my-4 m-auto py-4 max-w-screen-sm px-2 rounded-2xl border-solid flex gap-1">
         <div className="avatar placeholder h-16">
           <div className="bg-neutral-focus text-neutral-content rounded-full w-16">
             <span className="text-sm">x</span>
@@ -23,7 +24,9 @@ export const Post = ({ post }) => {
               </Link>
             </div>
 
-            <div className="font-light text-sm">few minutes </div>
+            <div className="font-light text-sm">
+              {formatDistance(new Date(post.timeStamp), new Date())} ago
+            </div>
           </div>
 
           <div>{post.content}</div>

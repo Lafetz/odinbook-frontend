@@ -34,7 +34,8 @@ export const LikeBtn = ({ post }) => {
         // );
       });
   };
-  const unlike = () => {
+  const unlike = (e) => {
+    e.target.disabled = true;
     const token = JSON.parse(localStorage.getItem("token"));
     fetch(`http://localhost:8080/posts/${post._id}/like`, {
       method: "DELETE",
@@ -44,6 +45,7 @@ export const LikeBtn = ({ post }) => {
       },
     })
       .then((res) => {
+        e.target.disabled = false;
         if (res.status === 200) {
           return res.json();
         }
