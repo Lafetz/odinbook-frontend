@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { RequestBtns } from "./requestBtns";
-export const FriendRequest = ({ id }) => {
+export const FriendRequest = ({ id, setOwner }) => {
   const [user, setUser] = useState({});
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem("token"));
@@ -42,7 +42,7 @@ export const FriendRequest = ({ id }) => {
             </Link>
           </div>
         </div>
-        <RequestBtns id={user._id} />
+        <RequestBtns id={user._id} setOwner={setOwner} />
       </div>
     )
   );

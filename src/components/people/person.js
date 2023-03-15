@@ -2,7 +2,7 @@ import { UserContext } from "../context/userContext";
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-export const Person = ({ person }) => {
+export const Person = ({ person, setPerson }) => {
   const { user, setUser } = useContext(UserContext);
   const [request, setRequest] = useState(false);
   const [requestr, setRequestr] = useState(false);
@@ -22,8 +22,9 @@ export const Person = ({ person }) => {
         }
       }
     }
-  }, [user]);
-  const sendRequest = () => {
+  }, [person]);
+  const sendRequest = (e) => {
+    e.target.disabled = true;
     const token = JSON.parse(localStorage.getItem("token"));
     fetch(`http://localhost:8080/user/request`, {
       method: "POST",
@@ -36,11 +37,14 @@ export const Person = ({ person }) => {
       body: JSON.stringify({ id: person._id }),
     })
       .then((res) => {
+        e.target.disabled = false;
         if (res.status === 200) {
+          return res.json();
         }
       })
-      .then((x) => {
-        console.log(x);
+
+      .then((newperson) => {
+        setPerson(newperson);
       });
   };
   return (
@@ -58,18 +62,24 @@ export const Person = ({ person }) => {
           </Link>
         </div>
       </div>
-      {request && (
-        <button className="btn  btn-sm bg-sideC " onClick={sendRequest}>
-          Send Request
-        </button>
+      {user._id != person._id && (
+        <span>
+          {request && (
+            <button className="btn  btn-sm bg-sideC " onClick={sendRequest}>
+              Send Request
+            </button>
+          )}
+          {requestr && (
+            <button className="btn  btn-sm bg-sideC ">user sent request</button>
+          )}
+          {requesty && (
+            <button className="btn  btn-sm bg-sideC ">Request sent</button>
+          )}
+          {requestf && (
+            <button className="btn  btn-sm bg-sideC ">Friends</button>
+          )}
+        </span>
       )}
-      {requestr && (
-        <button className="btn  btn-sm bg-sideC ">user sent request</button>
-      )}
-      {requesty && (
-        <button className="btn  btn-sm bg-sideC ">Request sent</button>
-      )}
-      {requestf && <button className="btn  btn-sm bg-sideC ">Friends</button>}
     </div>
   );
 };

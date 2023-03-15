@@ -8,9 +8,29 @@ import { PeopleList } from "../components/people/PeopleList";
 import { Modal } from "../components/logout/logoutModal";
 
 export const Friends = () => {
-  const { user } = useContext(UserContext);
+  const [owner, setOwner] = useState({});
+  useEffect(() => {
+    const token = JSON.parse(localStorage.getItem("token"));
 
-  useEffect(() => {}, [user]);
+    fetch("http://localhost:8080/user/owner", {
+      method: "GET",
+      mode: "cors",
+      headers: {
+        Authorization: "Bearer " + token.token,
+      },
+    }).then((res) => {
+      if (res.status === 200) {
+        res.json().then((owner) => {
+          setOwner(owner);
+        });
+      } else if (res.status === 401) {
+      } else {
+        //idk
+      }
+    });
+  }, []);
+
+  useEffect(() => {}, []);
   return (
     <div>
       <Modal />
@@ -20,24 +40,30 @@ export const Friends = () => {
         <div className="divider m-10  before:bg-sideC after:bg-sideC ">
           Friend Requests
         </div>
-
-        {Object.keys(user).length > 0 &&
-          user.friendRequest.map((request, i) => {
-            return <FriendRequest key={request + i} id={request} />;
+        {Object.keys(owner).length > 0 &&
+          owner.friendRequest.map((request, i) => {
+            return (
+              <FriendRequest
+                key={request + i}
+                id={request}
+                setOwner={setOwner}
+              />
+            );
           })}
         <div className="divider m-10 before:bg-sideC after:bg-sideC  ">
           Friends
         </div>
 
-        {Object.keys(user).length > 0 &&
-          user.friendList.map((request, i) => {
-            return <Friend key={request + i} id={request} />;
+        {Object.keys(owner).length > 0 &&
+          owner.friendList.map((request, i) => {
+            return (
+              <Friend key={request + i} id={request} setOwner={setOwner} />
+            );
           })}
-        <div className="divider m-10 before:bg-sideC after:bg-sideC ">
-          People
-        </div>
-        <PeopleList />
       </div>
     </div>
   );
 };
+//  <div className="divider m-10 before:bg-sideC after:bg-sideC ">
+//People
+//</div> <PeopleList setOwner={setOwner} />

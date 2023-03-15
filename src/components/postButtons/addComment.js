@@ -26,6 +26,7 @@ export const AddComment = ({ post }) => {
       .then((res) => {
         setLoading(false);
         if (res.status === 200) {
+          setComment("");
           return res.json();
         }
       })

@@ -14,7 +14,7 @@ export const Post = ({ post }) => {
         </div>
         <div className="flex flex-col gap-2 w-full">
           <div className="flex justify-between">
-            <div>
+            <div className="hover:underline">
               <Link to={`/profile/${post.userId._id}`} state={post.userId}>
                 <span className="font-semibold ">{post.userId.Name}</span>
                 <div className="font-light text-sm">

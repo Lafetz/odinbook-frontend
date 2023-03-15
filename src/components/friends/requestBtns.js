@@ -1,6 +1,11 @@
-export const RequestBtns = ({ id }) => {
+import { useState } from "react";
+
+export const RequestBtns = ({ id, setOwner }) => {
+  const [loadinga, setLoadinga] = useState(false);
+  const [loadingr, setLoadingr] = useState(false);
   const token = JSON.parse(localStorage.getItem("token"));
   const accept = () => {
+    setLoadinga(true);
     fetch(`http://localhost:8080/user/accept`, {
       method: "POST",
       mode: "cors",
@@ -12,13 +17,15 @@ export const RequestBtns = ({ id }) => {
       body: JSON.stringify({ id: id }),
     })
       .then((res) => {
+        setLoadinga(false);
         return res.json();
       })
-      .then((x) => {
-        console.log(x);
+      .then((owner) => {
+        setOwner(owner);
       });
   };
   const reject = () => {
+    setLoadingr(true);
     fetch(`http://localhost:8080/user/reject`, {
       method: "POST",
       mode: "cors",
@@ -30,22 +37,33 @@ export const RequestBtns = ({ id }) => {
       body: JSON.stringify({ id: id }),
     })
       .then((res) => {
+        setLoadingr(false);
         if (res.status === 200) {
-          console.log("rejected");
+          return res.json();
         }
       })
-      .then((x) => {
-        console.log(x);
+      .then((owner) => {
+        setOwner(owner);
       });
   };
   return (
     <div className="flex gap-2">
-      <button className="btn btn-sm bg-sideC" onClick={accept}>
-        Accept
-      </button>
-      <button className="btn  btn-sm bg-red" onClick={reject}>
-        Reject
-      </button>
+      {!loadinga && (
+        <button className="btn btn-sm bg-sideC" onClick={accept}>
+          Accept
+        </button>
+      )}
+      {loadinga && (
+        <button className="btn btn-sm loading bg-sideC">Accept</button>
+      )}
+      {!loadingr && (
+        <button className="btn  btn-sm bg-red" onClick={reject}>
+          Reject
+        </button>
+      )}
+      {loadingr && (
+        <button className="btn  btn-sm loading bg-red">Reject</button>
+      )}
     </div>
   );
 };

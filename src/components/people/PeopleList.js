@@ -4,7 +4,7 @@ import { UserContext } from "../context/userContext";
 import { useContext } from "react";
 export const PeopleList = () => {
   const { user, setUser } = useContext(UserContext);
-  const [people, setPeople] = useState(null);
+  const [people, setPeople] = useState([]);
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem("token"));
     if (Object.keys(user).length > 0) {
@@ -20,6 +20,7 @@ export const PeopleList = () => {
       }).then((res) => {
         if (res.status === 200) {
           res.json().then((users) => {
+            console.log(users);
             setPeople(users);
           });
         } else if (res.status === 401) {
@@ -35,7 +36,14 @@ export const PeopleList = () => {
     <div className=" my-4 m-auto py-4 max-w-screen-sm rounded-2xl flex flex-col gap-2 ">
       {people &&
         people.map((user) => {
-          return <Person key={user._id} person={user} />;
+          return (
+            <Person
+              key={user._id}
+              person={user}
+              setPeople={setPeople}
+              people={people}
+            />
+          );
         })}
     </div>
   );

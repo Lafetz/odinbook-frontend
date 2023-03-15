@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-export const Friend = ({ id }) => {
+export const Friend = ({ id, setOwner }) => {
   const token = JSON.parse(localStorage.getItem("token"));
   const [user, setUser] = useState({});
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem("token"));
     fetch(`http://localhost:8080/user/${id}`, {
@@ -25,6 +26,7 @@ export const Friend = ({ id }) => {
     });
   }, []);
   const remove = () => {
+    setLoading(true);
     fetch(`http://localhost:8080/user/remove`, {
       method: "POST",
       mode: "cors",
@@ -36,10 +38,11 @@ export const Friend = ({ id }) => {
       body: JSON.stringify({ id: id }),
     })
       .then((res) => {
+        setLoading(false);
         return res.json();
       })
-      .then((x) => {
-        console.log(x);
+      .then((owner) => {
+        setOwner(owner);
       });
   };
   return (
@@ -62,9 +65,14 @@ export const Friend = ({ id }) => {
             </Link>
           </div>
         </div>
-        <button className="btn  btn-sm bg-red" onClick={remove}>
-          Remove
-        </button>
+        {!loading && (
+          <button className="btn  btn-sm bg-red" onClick={remove}>
+            Remove
+          </button>
+        )}
+        {loading && (
+          <button className="btn  btn-sm loading bg-red">Remove</button>
+        )}
       </div>
     )
   );

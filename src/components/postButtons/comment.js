@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { UserContext } from "../context/userContext";
+import { Link } from "react-router-dom";
 export const Comment = ({ comment, post, index, setComments, comments }) => {
   const { user } = useContext(UserContext);
   const [loading, setLoading] = useState(false);
@@ -33,16 +34,19 @@ export const Comment = ({ comment, post, index, setComments, comments }) => {
         </div>
       </div>
       <div className="w-full">
-        <div>
-          <div className="flex justify-between">
-            <span className="font-semibold">{comment.userId.Name}</span>
-            {comment.userId._id == user._id && (
-              <button className="btn btn-xs bg-red" onClick={remove}>
-                remove
-              </button>
-            )}
-          </div>
-          <div className="font-light h-fit">@{comment.userId.username}</div>
+        <div className="hover:underline">
+          {" "}
+          <Link to={`/profile/${post.userId._id}`} state={post.userId}>
+            <div className="flex justify-between">
+              <span className="font-semibold">{comment.userId.Name}</span>
+              {comment.userId._id == user._id && (
+                <button className="btn btn-xs bg-red" onClick={remove}>
+                  remove
+                </button>
+              )}
+            </div>
+            <div className="font-light h-fit">@{comment.userId.username}</div>
+          </Link>
         </div>
         <div>{comment.content}</div>
       </div>
