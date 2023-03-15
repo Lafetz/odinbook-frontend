@@ -22,7 +22,6 @@ export const Add = () => {
       body: JSON.stringify({ content: post }),
     })
       .then((res) => {
-        console.log("res", res);
         setLoading(false);
         if (res.status == 200 && res.status !== undefined) {
           setPost("");

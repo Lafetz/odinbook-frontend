@@ -3,13 +3,13 @@ import { useState } from "react";
 import { AddComment } from "../postButtons/addComment";
 import { Link } from "react-router-dom";
 import formatDistance from "date-fns/formatDistance";
-export const Post = ({ post }) => {
+export const Post = ({ post, index }) => {
   const [show, setShow] = useState(false);
   return (
     <div>
       <div className=" bg-cardBg my-4 m-auto py-4 max-w-screen-sm px-2 rounded-2xl border-solid flex gap-1">
-        <div className="avatar placeholder h-16">
-          <div className="bg-neutral-focus text-neutral-content rounded-full w-16">
+        <div className="avatar placeholder h-12">
+          <div className="bg-neutral-focus text-neutral-content rounded-full w-12">
             <span className="text-sm">x</span>
           </div>
         </div>
@@ -53,7 +53,13 @@ export const Post = ({ post }) => {
               <span>{post.likedby.length} people liked this</span>
             )}
           </div>
-          <ReactionBtns post={post} setShow={setShow} show={show} />
+
+          <ReactionBtns
+            post={post}
+            setShow={setShow}
+            show={show}
+            index={index}
+          />
         </div>
       </div>
       {show && <AddComment post={post} />}

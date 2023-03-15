@@ -28,8 +28,8 @@ export const Posts = () => {
   }, []);
   return (
     <>
-      {posts.map((post) => {
-        return <Post key={post._id} post={post} />;
+      {posts.map((post, index) => {
+        return <Post key={post._id} post={post} index={index} />;
       })}
     </>
   );

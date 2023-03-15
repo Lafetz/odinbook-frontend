@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { Logout } from "./logout/logout.js";
 export const Profile = () => {
   const navigate = useNavigate();
+
   const { user, setUser } = useContext(UserContext);
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem("token"));
