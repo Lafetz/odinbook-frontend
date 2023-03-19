@@ -6,6 +6,12 @@ export const Signup = () => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [profilePic, setPic] = useState(null);
+  const picChange = (e) => {
+    const file = e.target.files[0];
+
+    setPic(file);
+  };
   const usernameChange = (e) => {
     setUsername(e.target.value);
   };
@@ -25,6 +31,7 @@ export const Signup = () => {
     const signupData = {
       Name: name,
       email: email,
+      imgUrl: profilePic,
       username: username,
       password: password,
     };
@@ -99,6 +106,14 @@ export const Signup = () => {
               id="password"
               className="input input-bordered bg-btnInput"
             />
+          </div>
+          <div className="form-control">
+            <label htmlFor="image" className="label">
+              <span className="label-text text-white font-bold">
+                Profile Picture
+              </span>
+            </label>
+            <input required id="Image" type="file" onChange={picChange} />
           </div>
           <div className="form-control mt-6">
             {!loading && (

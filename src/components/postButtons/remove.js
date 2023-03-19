@@ -30,7 +30,7 @@ export const Remove = ({ index, post }) => {
   return (
     <>
       {user._id === post.userId._id && (
-        <span>
+        <span className="w-full">
           {loading && (
             <button className="w-full hover:bg-red py-1 loading rounded-xl px-1 bg-mainBg">
               Remove
