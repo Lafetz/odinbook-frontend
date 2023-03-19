@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import formatDistance from "date-fns/formatDistance";
 export const Post = ({ post, index }) => {
   const [show, setShow] = useState(false);
+  console.log(post.imgUrl);
   return (
     <div>
       <div className=" bg-cardBg my-4 m-auto py-4 max-w-screen-sm px-2 rounded-2xl border-solid flex gap-1">
@@ -23,7 +24,7 @@ export const Post = ({ post, index }) => {
                 </div>
               </Link>
             </div>
-
+            {post.img && <img src={post.imgUrl} />}
             <div className="font-light text-sm">
               {formatDistance(new Date(post.timeStamp), new Date())} ago
             </div>
