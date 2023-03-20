@@ -5,13 +5,16 @@ import { Link } from "react-router-dom";
 import formatDistance from "date-fns/formatDistance";
 export const Post = ({ post, index }) => {
   const [show, setShow] = useState(false);
-  console.log(post.imgUrl);
+
   return (
     <div>
       <div className=" bg-cardBg my-4 m-auto py-4 max-w-screen-sm px-2 rounded-2xl border-solid flex gap-1">
         <div className="avatar placeholder h-12">
           <div className="bg-neutral-focus text-neutral-content rounded-full w-12">
-            <span className="text-sm">x</span>
+            {post.userId.img && <img src={post.userId.imgUrl} />}
+            {!post.userId.img && (
+              <span className="text-sm">{post.userId.Name[0]}</span>
+            )}
           </div>
         </div>
         <div className="flex flex-col gap-2 w-full">
@@ -24,13 +27,16 @@ export const Post = ({ post, index }) => {
                 </div>
               </Link>
             </div>
-            {post.img && <img src={post.imgUrl} />}
+
             <div className="font-light text-sm">
               {formatDistance(new Date(post.timeStamp), new Date())} ago
             </div>
           </div>
 
-          <div>{post.content}</div>
+          <div className="flex flex-col gap-2">
+            {post.img && <img src={post.imgUrl} />}
+            {post.content}
+          </div>
           <div className="font-light text-xs flex items-center gap-1">
             {post.likedBy.length > 0 && (
               <svg

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { uploadPic } from "../utils/firebase";
 export const Signup = () => {
   const [loading, setLoading] = useState(false);
   const [name, setName] = useState("");
@@ -31,7 +32,7 @@ export const Signup = () => {
     const signupData = {
       Name: name,
       email: email,
-      imgUrl: profilePic,
+      img: profilePic ? true : false,
       username: username,
       password: password,
     };
@@ -44,9 +45,14 @@ export const Signup = () => {
       },
       body: JSON.stringify(signupData),
     });
-    setLoading(false);
+
     if (res.status === 200) {
-      console.log("user created");
+      const user = await res.json();
+      if (profilePic) {
+        await uploadPic(profilePic, "profile", user._id);
+      }
+
+      setLoading(false);
     } else if (res.status === 401) {
     } else {
     }

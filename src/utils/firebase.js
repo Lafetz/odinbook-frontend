@@ -17,6 +17,5 @@ export const uploadPic = async (pic, folder, id) => {
 
   const picRef = ref(storage, `/${folder}/${id}`);
 
-  const res = await uploadBytes(picRef, pic);
-  console.log("uploaded");
+  return await uploadBytes(picRef, pic);
 };

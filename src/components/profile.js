@@ -83,12 +83,21 @@ export const Profile = () => {
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className=" ">
               <div className="flex gap-2 items-center bg-sideC hover:bg-sideD p-1 rounded-2xl ">
-                <div className="avatar placeholder">
-                  <div className="bg-neutral-focus text-neutral-content rounded-full w-8">
-                    <span className="text-xs">AA</span>
+                {Object.keys(user).length > 0 && (
+                  <div className="avatar placeholder">
+                    <div className="bg-neutral-focus text-neutral-content rounded-full w-8">
+                      {user.img && <img src={user.imgUrl} />}
+                      {!user.img && (
+                        <span className="text-md">{user.Name[0]}</span>
+                      )}
+                    </div>
                   </div>
-                </div>
-                <span className="font-semibold">{user.Name}</span>
+                )}
+                {Object.keys(user).length > 0 && (
+                  <span className="font-semibold">
+                    {user.Name.substring(0, 9)}
+                  </span>
+                )}
               </div>
             </label>
             <ul
