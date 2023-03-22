@@ -1,7 +1,7 @@
 import { Home } from "./pages/Home";
 import { Login } from "./pages/login";
 import { Friends } from "./pages/friends";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import { UserContextProvider } from "./components/context/userContext";
 import { Signup } from "./pages/signup";
 import { ProtectRoutes } from "./protectRoutes/protectRoutes";
@@ -9,7 +9,7 @@ import { UserProfile } from "./pages/profile";
 import { FindPeople } from "./pages/findPeople";
 function App() {
   return (
-    <BrowserRouter basename="/">
+    <HashRouter basename="/">
       <UserContextProvider>
         <Routes>
           <Route path="/login" element={<Login />} />
@@ -48,7 +48,7 @@ function App() {
           />
         </Routes>
       </UserContextProvider>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
