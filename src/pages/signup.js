@@ -79,7 +79,7 @@ export const Signup = () => {
                 d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
-            <span>Sign Up Successful!</span>
+            <span>Sign Up Successful! Login to continue</span>
           </div>
         </div>
       )}
@@ -171,7 +171,7 @@ export const Signup = () => {
           <span className="">
             You have an account?{" "}
             <Link className="hover:underline" to="/login">
-              Log in
+              Login
             </Link>
           </span>
         </div>
