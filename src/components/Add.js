@@ -9,7 +9,7 @@ export const Add = ({ error }) => {
   const [pic, setPic] = useState(null);
   const picChange = (e) => {
     const file = e.target.files[0];
-    console.log(file);
+
     setPic(file);
   };
   const postChange = (e) => {
