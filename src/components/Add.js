@@ -32,7 +32,6 @@ export const Add = () => {
       body: JSON.stringify({ content: post, img: pic ? true : false }),
     })
       .then((res) => {
-        setLoading(false);
         if (res.status == 200 && res.status !== undefined) {
           setPost("");
           setPic(null);
@@ -44,7 +43,7 @@ export const Add = () => {
         if (pic) {
           await uploadPic(pic, "post", post._id);
         }
-
+        setLoading(false);
         setPosts([post, ...posts]);
       });
   };
@@ -63,6 +62,7 @@ export const Add = () => {
                 Choose Image
               </label>
               <input
+                key={pic || ""}
                 className="file-input file-input-bordered file-input-xs  file-input-primary w-8/10 max-w-xs text-mainBg"
                 required
                 id="image"

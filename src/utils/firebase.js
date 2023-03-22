@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
+import { getStorage, ref, uploadBytes } from "firebase/storage";
 const app = initializeApp({
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
@@ -10,7 +10,6 @@ const app = initializeApp({
 });
 const storage = getStorage(app);
 export const uploadPic = async (pic, folder, id) => {
-  console.log("yes");
   if (pic === null) {
     return;
   }

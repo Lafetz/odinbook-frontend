@@ -54,7 +54,8 @@ export const Friend = ({ id, setOwner }) => {
         <div className="flex gap-2">
           <div className="avatar placeholder">
             <div className="bg-neutral-focus text-neutral-content rounded-full w-12">
-              <span>MX</span>
+              {user.img && <img src={user.imgUrl} />}
+              {!user.img && <span className="text-md">{user.Name[0]}</span>}
             </div>
           </div>
           <div>

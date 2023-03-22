@@ -34,8 +34,9 @@ export const Post = ({ post, index }) => {
           </div>
 
           <div className="flex flex-col gap-2">
-            {post.img && <img src={post.imgUrl} />}
+            {" "}
             {post.content}
+            {post.img && <img src={post.imgUrl} />}
           </div>
           <div className="font-light text-xs flex items-center gap-1">
             {post.likedBy.length > 0 && (

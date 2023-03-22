@@ -13,6 +13,7 @@ export const Profile = () => {
     if (!token) {
       navigate("/login");
     }
+
     fetch("http://localhost:8080/user/owner", {
       method: "GET",
       mode: "cors",
