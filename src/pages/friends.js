@@ -1,10 +1,9 @@
 import { Profile } from "../components/profile";
 import { useEffect, useState } from "react";
-import { UserContext } from "../components/context/userContext";
-import { useContext } from "react";
+
 import { Friend } from "../components/friends/friend";
 import { FriendRequest } from "../components/friends/friendRequest";
-import { PeopleList } from "../components/people/PeopleList";
+
 import { Modal } from "../components/logout/logoutModal";
 import { Link } from "react-router-dom";
 
@@ -13,7 +12,7 @@ export const Friends = () => {
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem("token"));
 
-    fetch("http://localhost:8080/user/owner", {
+    fetch("https://odinbook-backend-c0h2.onrender.com/user/owner", {
       method: "GET",
       mode: "cors",
       headers: {

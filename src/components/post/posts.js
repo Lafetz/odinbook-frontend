@@ -9,7 +9,7 @@ export const Posts = () => {
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem("token"));
 
-    fetch("http://localhost:8080/posts", {
+    fetch("https://odinbook-backend-c0h2.onrender.com/posts", {
       method: "Get",
       mode: "cors",
       headers: {
@@ -28,7 +28,7 @@ export const Posts = () => {
         }
       })
       .catch((err) => {});
-  }, []);
+  }, [setPosts, setError]);
   return (
     <>
       {" "}

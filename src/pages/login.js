@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../components/context/userContext";
-import { useContext } from "react";
+
 export const Login = () => {
   const navigate = useNavigate();
-  const { user, setUser } = useContext(UserContext);
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -23,15 +22,18 @@ export const Login = () => {
       password: password,
     };
     setLoading(true);
-    const res = await fetch("http://localhost:8080/auth/login", {
-      method: "POST",
-      mode: "cors",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(loginData),
-    });
+    const res = await fetch(
+      "https://odinbook-backend-c0h2.onrender.com/auth/login",
+      {
+        method: "POST",
+        mode: "cors",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(loginData),
+      }
+    );
     if (res.status === 200) {
       setLoading(false);
       setError(false);
@@ -47,7 +49,7 @@ export const Login = () => {
   };
   return (
     <div className="w-full h-screen flex justify-center items-center bg-mainBg text-white">
-      <div className="bg-cardBg p-6 rounded-2xl text-white flex flex-col gap-2">
+      <div className="bg-cardBg p-6 px-5 rounded-2xl text-white flex flex-col gap-2">
         <form onSubmit={submitForm} className="flex flex-col gap-2">
           <div className="form-control">
             <label htmlFor="username" className="label">
@@ -91,6 +93,7 @@ export const Login = () => {
             )}
           </div>
         </form>
+        <div className="divider  before:bg-sideC after:bg-sideC ">or</div>
         <span href="#" className="">
           Don't have an account?{" "}
           <Link className="hover:underline" to="/signup">

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 export const Userfeed = () => {
   const [posts, setPosts] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:8080/user/owner", {
+    fetch("https://odinbook-backend-c0h2.onrender.com/user/owner", {
       method: "GET",
       mode: "cors",
       headers: {

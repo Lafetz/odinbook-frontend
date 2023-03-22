@@ -1,10 +1,10 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { PostsContext } from "../pages/Home";
 import { uploadPic } from "../utils/firebase";
 export const Add = ({ error }) => {
   const { posts, setPosts } = useContext(PostsContext);
   const [post, setPost] = useState(" ");
-  const [image, setImage] = useState(null);
+
   const [loading, setLoading] = useState(false);
   const [pic, setPic] = useState(null);
   const picChange = (e) => {
@@ -21,7 +21,7 @@ export const Add = ({ error }) => {
     e.preventDefault();
     const token = JSON.parse(localStorage.getItem("token"));
     setLoading(true);
-    fetch(`http://localhost:8080/posts`, {
+    fetch(`https://odinbook-backend-c0h2.onrender.com/posts`, {
       method: "POST",
       mode: "cors",
       headers: {
@@ -32,7 +32,7 @@ export const Add = ({ error }) => {
       body: JSON.stringify({ content: post, img: pic ? true : false }),
     })
       .then((res) => {
-        if (res.status == 200 && res.status !== undefined) {
+        if (res.status === 200 && res.status !== undefined) {
           setPost("");
           setPic(null);
           return res.json();
@@ -55,7 +55,7 @@ export const Add = ({ error }) => {
           <div className="flex gap-4 items-center">
             <form className="w-full flex flex-col gap-2" id="form">
               <textarea
-                className="textarea  textarea-sm w-full resize-none bg-btnInput"
+                className="textarea textarea-md w-full bg-btnInput"
                 value={post}
                 onChange={postChange}
               ></textarea>
@@ -75,12 +75,15 @@ export const Add = ({ error }) => {
                 </div>
 
                 {!loading && (
-                  <button onClick={addPost} className="btn btn-sm self-end">
+                  <button
+                    onClick={addPost}
+                    className="btn btn-sm self-end hover:bg-mainBg"
+                  >
                     Post
                   </button>
                 )}
                 {loading && (
-                  <button className="btn btn-sm loading">Post</button>
+                  <button className="btn btn-sm loading ">Post</button>
                 )}
               </div>
             </form>

@@ -3,7 +3,7 @@ import { PostsContext } from "../../pages/Home";
 import { UserContext } from "../context/userContext";
 
 export const Remove = ({ index, post }) => {
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const { posts, setPosts } = useContext(PostsContext);
   const [loading, setLoading] = useState(false);
 
@@ -12,7 +12,7 @@ export const Remove = ({ index, post }) => {
 
     setLoading(true);
     const token = JSON.parse(localStorage.getItem("token"));
-    fetch(`http://localhost:8080/posts/${post._id}`, {
+    fetch(`https://odinbook-backend-c0h2.onrender.com/posts/${post._id}`, {
       method: "DELETE",
       mode: "cors",
       headers: {

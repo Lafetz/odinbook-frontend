@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { UserContext } from "../components/context/userContext";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { Logout } from "./logout/logout.js";
-import { LoadingError } from "./errors/profileError";
+
 export const Profile = ({ setError, error }) => {
   const navigate = useNavigate();
 
@@ -15,7 +15,7 @@ export const Profile = ({ setError, error }) => {
       navigate("/login");
     }
 
-    fetch("http://localhost:8080/user/owner", {
+    fetch("https://odinbook-backend-c0h2.onrender.com/user/owner", {
       method: "GET",
       mode: "cors",
       headers: {
@@ -36,7 +36,7 @@ export const Profile = ({ setError, error }) => {
       .catch((err) => {
         setError(true);
       });
-  }, []);
+  }, [navigate, setUser, setError]);
   return (
     <>
       <div className="py-4 border-b-2 border-white ">
@@ -94,7 +94,7 @@ export const Profile = ({ setError, error }) => {
                     {Object.keys(user).length > 0 && (
                       <div className="avatar placeholder">
                         <div className="bg-neutral-focus text-neutral-content rounded-full w-8">
-                          {user.img && <img src={user.imgUrl} />}
+                          {user.img && <img src={user.imgUrl} alt="profile" />}
                           {!user.img && (
                             <span className="text-md">{user.Name[0]}</span>
                           )}

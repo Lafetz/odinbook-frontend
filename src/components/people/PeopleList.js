@@ -3,12 +3,12 @@ import { PersonState } from "./personState";
 import { UserContext } from "../context/userContext";
 import { useContext } from "react";
 export const PeopleList = () => {
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const [people, setPeople] = useState([]);
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem("token"));
     if (Object.keys(user).length > 0) {
-      fetch("http://localhost:8080/user", {
+      fetch("https://odinbook-backend-c0h2.onrender.com/user", {
         method: "POST",
         mode: "cors",
         headers: {

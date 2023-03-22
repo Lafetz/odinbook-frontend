@@ -3,12 +3,12 @@ import { PostsContext } from "../../pages/Home";
 import { UserContext } from "../context/userContext";
 
 export const LikeBtn = ({ post }) => {
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const { posts, setPosts } = useContext(PostsContext);
   const like = (e) => {
     e.target.disabled = true;
     const token = JSON.parse(localStorage.getItem("token"));
-    fetch(`http://localhost:8080/posts/${post._id}/like`, {
+    fetch(`https://odinbook-backend-c0h2.onrender.com/posts/${post._id}/like`, {
       method: "POST",
       mode: "cors",
       headers: {
@@ -23,7 +23,7 @@ export const LikeBtn = ({ post }) => {
       })
       .then((post) => {
         const newposts = posts.map((oldPost) => {
-          if (oldPost._id == post._id) {
+          if (oldPost._id === post._id) {
             return post;
           } else {
             return oldPost;
@@ -36,8 +36,9 @@ export const LikeBtn = ({ post }) => {
   };
   const unlike = (e) => {
     e.target.disabled = true;
+
     const token = JSON.parse(localStorage.getItem("token"));
-    fetch(`http://localhost:8080/posts/${post._id}/like`, {
+    fetch(`https://odinbook-backend-c0h2.onrender.com/posts/${post._id}/like`, {
       method: "DELETE",
       mode: "cors",
       headers: {
@@ -52,7 +53,7 @@ export const LikeBtn = ({ post }) => {
       })
       .then((post) => {
         const newposts = posts.map((oldPost) => {
-          if (oldPost._id == post._id) {
+          if (oldPost._id === post._id) {
             return post;
           } else {
             return oldPost;
@@ -74,7 +75,7 @@ export const LikeBtn = ({ post }) => {
       {!post.likedBy.includes(user._id) && (
         <button
           onClick={like}
-          className="w-full hover:bg-sideC py-1 rounded-xl bg-mainBg"
+          className=" w-full hover:bg-sideC py-1 rounded-xl bg-mainBg"
         >
           like
         </button>

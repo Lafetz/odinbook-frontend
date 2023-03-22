@@ -7,7 +7,7 @@ export const Friend = ({ id, setOwner }) => {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem("token"));
-    fetch(`http://localhost:8080/user/${id}`, {
+    fetch(`https://odinbook-backend-c0h2.onrender.com/user/${id}`, {
       method: "GET",
       mode: "cors",
       headers: {
@@ -24,7 +24,7 @@ export const Friend = ({ id, setOwner }) => {
         //idk
       }
     });
-  }, []);
+  }, [id]);
   const remove = () => {
     setLoading(true);
     fetch(`http://localhost:8080/user/remove`, {
@@ -54,7 +54,7 @@ export const Friend = ({ id, setOwner }) => {
         <div className="flex gap-2">
           <div className="avatar placeholder">
             <div className="bg-neutral-focus text-neutral-content rounded-full w-12">
-              {user.img && <img src={user.imgUrl} />}
+              {user.img && <img src={user.imgUrl} alt="profile" />}
               {!user.img && <span className="text-md">{user.Name[0]}</span>}
             </div>
           </div>

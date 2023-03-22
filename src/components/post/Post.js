@@ -11,7 +11,7 @@ export const Post = ({ post, index }) => {
       <div className=" bg-cardBg my-4 m-auto py-4 max-w-screen-sm px-2 rounded-2xl border-solid flex gap-1">
         <div className="avatar placeholder h-12">
           <div className="bg-neutral-focus text-neutral-content rounded-full w-12">
-            {post.userId.img && <img src={post.userId.imgUrl} />}
+            {post.userId.img && <img src={post.userId.imgUrl} alt="profile" />}
             {!post.userId.img && (
               <span className="text-sm">{post.userId.Name[0]}</span>
             )}
@@ -34,9 +34,8 @@ export const Post = ({ post, index }) => {
           </div>
 
           <div className="flex flex-col gap-2">
-            {" "}
             {post.content}
-            {post.img && <img src={post.imgUrl} />}
+            {post.img && <img src={post.imgUrl} alt="post " />}
           </div>
           <div className="font-light text-xs flex items-center gap-1">
             {post.likedBy.length > 0 && (

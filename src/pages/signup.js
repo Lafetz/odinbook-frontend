@@ -37,15 +37,18 @@ export const Signup = () => {
       username: username,
       password: password,
     };
-    const res = await fetch("http://localhost:8080/auth/signup", {
-      method: "POST",
-      mode: "cors",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(signupData),
-    });
+    const res = await fetch(
+      "https://odinbook-backend-c0h2.onrender.com/auth/signup",
+      {
+        method: "POST",
+        mode: "cors",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(signupData),
+      }
+    );
 
     if (res.status === 200) {
       const user = await res.json();

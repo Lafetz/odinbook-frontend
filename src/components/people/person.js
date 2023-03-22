@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export const Person = ({ person, setPerson }) => {
-  const { user, setUser } = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const [request, setRequest] = useState(false);
   const [requestr, setRequestr] = useState(false);
   const [requesty, setRequesty] = useState(false);
@@ -16,17 +16,17 @@ export const Person = ({ person, setPerson }) => {
       setRequestr(r);
       setRequesty(y);
       setRequestf(f);
-      if (r == false && y == false) {
+      if (r === false && y === false) {
         if (!f) {
           setRequest(true);
         }
       }
     }
-  }, [person]);
+  }, [person, user]);
   const sendRequest = (e) => {
     e.target.disabled = true;
     const token = JSON.parse(localStorage.getItem("token"));
-    fetch(`http://localhost:8080/user/request`, {
+    fetch(`https://odinbook-backend-c0h2.onrender.com/user/request`, {
       method: "POST",
       mode: "cors",
       headers: {
@@ -52,7 +52,7 @@ export const Person = ({ person, setPerson }) => {
       <div className="flex gap-2">
         <div className="avatar placeholder">
           <div className="bg-neutral-focus text-neutral-content rounded-full w-12">
-            {person.img && <img src={person.imgUrl} />}
+            {person.img && <img src={person.imgUrl} alt="profile" />}
             {!person.img && <span className="text-md">{person.Name[0]}</span>}
           </div>
         </div>
@@ -63,7 +63,7 @@ export const Person = ({ person, setPerson }) => {
           </Link>
         </div>
       </div>
-      {user._id != person._id && (
+      {user._id !== person._id && (
         <span>
           {request && (
             <button className="btn  btn-sm bg-sideC " onClick={sendRequest}>

@@ -3,20 +3,20 @@ import { UserContext } from "../context/userContext";
 import { Link } from "react-router-dom";
 export const Comment = ({ comment, post, index, setComments, comments }) => {
   const { user } = useContext(UserContext);
-  const [loading, setLoading] = useState(false);
+  const [Loading, setLoading] = useState(false);
   const remove = (e) => {
-    e.target.disabled = true;
-
     setLoading(true);
     const token = JSON.parse(localStorage.getItem("token"));
-    fetch(`http://localhost:8080/posts/${post._id}/comments/${comment._id}`, {
-      method: "DELETE",
-      mode: "cors",
-      headers: {
-        Authorization: "Bearer " + token.token,
-      },
-    }).then((res) => {
-      e.target.disabled = true;
+    fetch(
+      `https://odinbook-backend-c0h2.onrender.com/posts/${post._id}/comments/${comment._id}`,
+      {
+        method: "DELETE",
+        mode: "cors",
+        headers: {
+          Authorization: "Bearer " + token.token,
+        },
+      }
+    ).then((res) => {
       setLoading(false);
       if (res.status === 200) {
         setComments([
@@ -44,13 +44,22 @@ export const Comment = ({ comment, post, index, setComments, comments }) => {
               @{comment.userId.username}
             </div>
           </Link>
-          {comment.userId._id == user._id && (
-            <button
-              className="btn btn-xs bg-red hover:bg-redD"
-              onClick={remove}
-            >
-              remove
-            </button>
+          {comment.userId._id === user._id && (
+            <>
+              {!Loading && (
+                <button
+                  className="btn btn-xs bg-red hover:bg-redD"
+                  onClick={remove}
+                >
+                  remove
+                </button>
+              )}
+              {Loading && (
+                <button className="btn loading btn-xs bg-red hover:bg-redD">
+                  remove
+                </button>
+              )}
+            </>
           )}
         </div>
         <div>{comment.content}</div>

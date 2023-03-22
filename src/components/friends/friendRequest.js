@@ -5,7 +5,7 @@ export const FriendRequest = ({ id, setOwner }) => {
   const [user, setUser] = useState({});
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem("token"));
-    fetch(`http://localhost:8080/user/${id}`, {
+    fetch(`https://odinbook-backend-c0h2.onrender.com/user/${id}`, {
       method: "GET",
       mode: "cors",
       headers: {
@@ -22,7 +22,7 @@ export const FriendRequest = ({ id, setOwner }) => {
         //idk  key={user._id}
       }
     });
-  }, []);
+  }, [id]);
   return (
     Object.keys(user).length > 0 && (
       <div

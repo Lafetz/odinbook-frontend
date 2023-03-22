@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import { Post } from "./Post";
+
 export const UserPosts = ({ person }) => {
   const [posts, setPosts] = useState([]);
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem("token"));
 
-    fetch(`http://localhost:8080/posts/${person._id}`, {
+    fetch(`https://odinbook-backend-c0h2.onrender.com/posts/${person._id}`, {
       method: "Get",
       mode: "cors",
       headers: {
@@ -23,7 +23,7 @@ export const UserPosts = ({ person }) => {
         //idk
       }
     });
-  }, []);
+  }, [person]);
   return (
     <>
       {posts.map((post) => {
@@ -47,7 +47,10 @@ export const UserPosts = ({ person }) => {
                   <div className="font-light text-sm">few minutes </div>
                 </div>
 
-                <div>{post.content}</div>
+                <div className="flex flex-col gap-2">
+                  {post.content}
+                  {post.img && <img src={post.imgUrl} alt="post " />}
+                </div>
                 <div className="font-light text-xs flex items-center gap-1">
                   {post.likedBy.length > 0 && (
                     <svg

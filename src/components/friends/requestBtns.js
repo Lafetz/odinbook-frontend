@@ -6,7 +6,7 @@ export const RequestBtns = ({ id, setOwner }) => {
   const token = JSON.parse(localStorage.getItem("token"));
   const accept = () => {
     setLoadinga(true);
-    fetch(`http://localhost:8080/user/accept`, {
+    fetch(`https://odinbook-backend-c0h2.onrender.com/user/accept`, {
       method: "POST",
       mode: "cors",
       headers: {

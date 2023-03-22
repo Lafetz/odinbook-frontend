@@ -13,16 +13,19 @@ export const AddComment = ({ post }) => {
     setLoading(true);
     e.preventDefault();
     const token = JSON.parse(localStorage.getItem("token"));
-    fetch(`http://localhost:8080/posts/${post._id}/comments`, {
-      method: "POST",
-      mode: "cors",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + token.token,
-      },
-      body: JSON.stringify({ content: comment }),
-    })
+    fetch(
+      `https://odinbook-backend-c0h2.onrender.com/posts/${post._id}/comments`,
+      {
+        method: "POST",
+        mode: "cors",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + token.token,
+        },
+        body: JSON.stringify({ content: comment }),
+      }
+    )
       .then((res) => {
         setLoading(false);
         if (res.status === 200) {

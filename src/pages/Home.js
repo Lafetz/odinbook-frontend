@@ -2,7 +2,7 @@ import { Profile } from "../components/profile";
 import { Add } from "../components/Add";
 import { Posts } from "../components/post/posts";
 import { Modal } from "../components/logout/logoutModal";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import { LoadingError } from "../components/errors/profileError";
 
 export const PostsContext = createContext(null);
