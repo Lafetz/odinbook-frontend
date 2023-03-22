@@ -89,6 +89,7 @@ export const Signup = () => {
 
       <div className="w-full h-screen flex justify-center items-center bg-mainBg text-white">
         <div className="bg-cardBg p-6 rounded-2xl text-white flex flex-col gap-2">
+          <h1 className="font-bold w-fit m-auto text-xl">Join OdinBook!</h1>
           <form onSubmit={submit}>
             <div className="form-control">
               <label htmlFor="email" className="label">
@@ -108,7 +109,7 @@ export const Signup = () => {
                 <span className="label-text text-white">name</span>
               </label>
               <input
-                minlength="6"
+                minLength="6"
                 required
                 id="name"
                 onChange={nameChange}
@@ -122,7 +123,7 @@ export const Signup = () => {
                 <span className="label-text text-white">username</span>
               </label>
               <input
-                minlength="6"
+                minLength="6"
                 required
                 id="username"
                 type="text"
@@ -136,7 +137,7 @@ export const Signup = () => {
                 <span className="label-text text-white">Password</span>
               </label>
               <input
-                minlength="6"
+                minLength="6"
                 required
                 onChange={passwordChange}
                 type="password"

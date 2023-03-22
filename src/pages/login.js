@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { ExampleUser } from "../components/exampleUser";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -50,6 +51,7 @@ export const Login = () => {
   return (
     <div className="w-full h-screen flex justify-center items-center bg-mainBg text-white">
       <div className="bg-cardBg p-6 px-5 rounded-2xl text-white flex flex-col gap-2">
+        <h1 className="font-bold w-fit m-auto text-xl">Login to OdinBook</h1>
         <form onSubmit={submitForm} className="flex flex-col gap-2">
           <div className="form-control">
             <label htmlFor="username" className="label">
@@ -93,7 +95,9 @@ export const Login = () => {
             )}
           </div>
         </form>
+
         <div className="divider  before:bg-sideC after:bg-sideC ">or</div>
+        <ExampleUser />
         <span href="#" className="">
           Don't have an account?{" "}
           <Link className="hover:underline" to="/signup">
