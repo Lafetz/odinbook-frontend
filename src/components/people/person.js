@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export const Person = ({ person, setPerson }) => {
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const [request, setRequest] = useState(false);
   const [requestr, setRequestr] = useState(false);
   const [requesty, setRequesty] = useState(false);
@@ -65,11 +65,16 @@ export const Person = ({ person, setPerson }) => {
       </div>
       {user._id !== person._id && (
         <span>
-          {request && (
-            <button className="btn  btn-sm bg-sideC " onClick={sendRequest}>
-              Send Request
-            </button>
+          {!requesty && (
+            <>
+              {request && (
+                <button className="btn  btn-sm bg-sideC " onClick={sendRequest}>
+                  Send Request
+                </button>
+              )}
+            </>
           )}
+
           {requestr && (
             <button className="btn  btn-sm bg-sideC ">user sent request</button>
           )}

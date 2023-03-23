@@ -32,13 +32,21 @@ export const Remove = ({ index, post }) => {
       {user._id === post.userId._id && (
         <span className="w-full">
           {loading && (
-            <button className="w-full hover:bg-red py-1 loading rounded-xl px-1 bg-mainBg">
+            <button className=" w-full hover:bg-red py-1 loading rounded-xl px-1 bg-btnInput">
+              <div
+                className="inline-block h-3 w-3 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+                role="status"
+              >
+                <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
+                  Loading...
+                </span>
+              </div>{" "}
               Remove
             </button>
           )}
           {!loading && (
             <button
-              className="w-full hover:bg-red py-1 rounded-xl px-1 bg-mainBg"
+              className="w-full hover:bg-red py-1 rounded-xl px-1 bg-btnInput"
               onClick={remove}
             >
               Remove

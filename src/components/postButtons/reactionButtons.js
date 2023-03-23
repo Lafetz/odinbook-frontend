@@ -14,7 +14,7 @@ export const ReactionBtns = ({ post, setShow, show, index }) => {
       <LikeBtn post={post} />
       <button
         onClick={btnClick}
-        className="w-full hover:bg-sideC py-1 px-1 rounded-xl bg-mainBg"
+        className="w-full hover:bg-sideC py-1 px-1 rounded-xl bg-btnInput"
       >
         Comment
       </button>

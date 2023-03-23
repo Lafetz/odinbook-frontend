@@ -87,7 +87,7 @@ export const Signup = () => {
         </div>
       )}
 
-      <div className="w-full h-screen flex justify-center items-center bg-mainBg text-white">
+      <div className="w-full min-h-screen p-2 flex justify-center items-center bg-mainBg text-white">
         <div className="bg-cardBg p-6 px-4 rounded-2xl text-white flex flex-col gap-2 ">
           <h1 className="font-bold w-fit m-auto text-xl">Join OdinBook!</h1>
           <form onSubmit={submit}>
@@ -106,7 +106,7 @@ export const Signup = () => {
             </div>
             <div className="form-control">
               <label htmlFor="name" className="label">
-                <span className="label-text text-white">name</span>
+                <span className="label-text text-white">Full Name</span>
               </label>
               <input
                 minLength="6"
@@ -120,7 +120,7 @@ export const Signup = () => {
             </div>
             <div className="form-control">
               <label htmlFor="username" className="label">
-                <span className="label-text text-white">username</span>
+                <span className="label-text text-white">Username</span>
               </label>
               <input
                 minLength="6"
@@ -156,7 +156,7 @@ export const Signup = () => {
                 id="Image"
                 type="file"
                 onChange={picChange}
-                className="file-input file-input-primary file-input-bordered file-input-md w-full max-w-xs text-mainBg"
+                className="file-input file-input-primary file-input-bordered file-input-md w-full bg-btnInput max-w-xs text-white"
               />
             </div>
             <div className="form-control mt-6">

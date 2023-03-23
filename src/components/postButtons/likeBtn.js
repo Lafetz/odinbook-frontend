@@ -75,7 +75,7 @@ export const LikeBtn = ({ post }) => {
       {!post.likedBy.includes(user._id) && (
         <button
           onClick={like}
-          className=" w-full hover:bg-sideC py-1 rounded-xl bg-mainBg"
+          className=" w-full hover:bg-sideC py-1 rounded-xl bg-btnInput"
         >
           like
         </button>

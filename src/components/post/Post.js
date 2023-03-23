@@ -8,7 +8,7 @@ export const Post = ({ post, index }) => {
 
   return (
     <div>
-      <div className=" bg-cardBg my-4 m-auto py-4 max-w-screen-sm px-2 rounded-2xl border-solid flex gap-1">
+      <div className="   border-t-2 border-b-2 border-darkwhite  my-4 m-auto py-4 max-w-screen-sm  border-solid flex gap-1">
         <div className="avatar placeholder h-12">
           <div className="bg-neutral-focus text-neutral-content rounded-full w-12">
             {post.userId.img && <img src={post.userId.imgUrl} alt="profile" />}

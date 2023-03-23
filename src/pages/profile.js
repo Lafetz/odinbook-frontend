@@ -6,6 +6,7 @@ import { Profile } from "../components/profile";
 import { Modal } from "../components/logout/logoutModal";
 import { UserPosts } from "../components/post/userpost";
 import { useState } from "react";
+
 export const UserProfile = () => {
   const location = useLocation();
 
@@ -16,6 +17,7 @@ export const UserProfile = () => {
       <Modal />
       <Profile />
       <div className="my-5"></div>
+
       <Person person={person} setPerson={setPerson} />
       <div className="divider m-10 before:bg-sideC after:bg-sideC ">
         User Posts

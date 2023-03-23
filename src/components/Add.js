@@ -59,19 +59,20 @@ export const Add = ({ error }) => {
                 value={post}
                 onChange={postChange}
               ></textarea>
-              <div className="flex justify-between items-center">
+              <div className="flex flex-wrap gap-3 justify-between items-center">
                 <div className="flex flex-col">
                   <label htmlFor="image" className="font-bold">
                     Choose Image
                   </label>
                   <input
                     key={pic || ""}
-                    className="file-input file-input-bordered file-input-xs  file-input-primary w-8/10 max-w-xs text-mainBg"
+                    className="file-input  file-input-bordered file-input-xs file-input-primary bg-cardBg text-white "
+                    accept="image/x-png, image/jpeg"
                     required
                     id="image"
                     type="file"
                     onChange={picChange}
-                  />
+                  />{" "}
                 </div>
 
                 {!loading && (

@@ -1,3 +1,4 @@
+import { formatDistance } from "date-fns";
 import { useState } from "react";
 import { useEffect } from "react";
 
@@ -44,7 +45,9 @@ export const UserPosts = ({ person }) => {
                     </div>
                   </div>
 
-                  <div className="font-light text-sm">few minutes </div>
+                  <div className="font-light text-sm">
+                    {formatDistance(new Date(post.timeStamp), new Date())} ago{" "}
+                  </div>
                 </div>
 
                 <div className="flex flex-col gap-2">
