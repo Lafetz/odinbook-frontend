@@ -1,5 +1,5 @@
 # OdinBook-frontend
- backend [https://github.com/Lafetz/odinbook-backend](https://lafetz.github.io/odinbook-frontend)
+ backend [https://github.com/Lafetz/odinbook-backend](https://github.com/Lafetz/odinbook-backend)
 
 Simple Facebook-inspired social media website.
 ### [Live Demo](https://lafetz.github.io/odinbook-frontend)
