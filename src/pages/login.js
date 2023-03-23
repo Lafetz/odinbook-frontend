@@ -50,7 +50,7 @@ export const Login = () => {
   };
   return (
     <div className="w-full h-screen flex justify-center items-center bg-mainBg text-white">
-      <div className="bg-cardBg p-6 px-5 rounded-2xl text-white flex flex-col gap-2">
+      <div className="bg-cardBg p-6 px-4 rounded-2xl text-white flex flex-col gap-2">
         <h1 className="font-bold w-fit m-auto text-xl">Login to OdinBook</h1>
         <form onSubmit={submitForm} className="flex flex-col gap-2">
           <div className="form-control">

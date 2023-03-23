@@ -10,7 +10,7 @@ export const ExampleUser = () => {
       username: "example",
       password: "123456789",
     };
-    console.log(loginData);
+
     setLoading(true);
     const res = await fetch(
       "https://odinbook-backend-c0h2.onrender.com/auth/login",

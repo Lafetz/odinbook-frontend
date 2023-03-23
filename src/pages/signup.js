@@ -88,7 +88,7 @@ export const Signup = () => {
       )}
 
       <div className="w-full h-screen flex justify-center items-center bg-mainBg text-white">
-        <div className="bg-cardBg p-6 rounded-2xl text-white flex flex-col gap-2">
+        <div className="bg-cardBg p-6 px-4 rounded-2xl text-white flex flex-col gap-2 ">
           <h1 className="font-bold w-fit m-auto text-xl">Join OdinBook!</h1>
           <form onSubmit={submit}>
             <div className="form-control">
@@ -156,7 +156,7 @@ export const Signup = () => {
                 id="Image"
                 type="file"
                 onChange={picChange}
-                className="file-input file-input-bordered file-input-md w-full max-w-xs text-mainBg"
+                className="file-input file-input-primary file-input-bordered file-input-md w-full max-w-xs text-mainBg"
               />
             </div>
             <div className="form-control mt-6">
