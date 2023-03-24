@@ -53,9 +53,15 @@ export const Signup = () => {
 
     if (res.status === 200) {
       const user = await res.json();
+
       if (profilePic) {
         await uploadPic(profilePic, "profile", user._id);
       }
+      setUsername("");
+      setPassword("");
+      setEmail("");
+      setName("");
+      setPic(null);
       setSuccess(true);
       setTimeout(() => {
         setSuccess(false);
@@ -97,6 +103,7 @@ export const Signup = () => {
                 <span className="label-text text-white">Email</span>
               </label>
               <input
+                value={email}
                 required
                 id="email"
                 onChange={emailChange}
@@ -110,6 +117,7 @@ export const Signup = () => {
                 <span className="label-text text-white">Full Name</span>
               </label>
               <input
+                value={name}
                 minLength="6"
                 required
                 id="name"
@@ -124,6 +132,7 @@ export const Signup = () => {
                 <span className="label-text text-white">Username</span>
               </label>
               <input
+                value={username}
                 pattern="^[a-zA-Z0-9](.*[a-zA-Z0-9])?$"
                 minLength="6"
                 required
@@ -139,6 +148,7 @@ export const Signup = () => {
                 <span className="label-text text-white">Password</span>
               </label>
               <input
+                value={password}
                 minLength="6"
                 required
                 onChange={passwordChange}
@@ -149,12 +159,13 @@ export const Signup = () => {
               />
             </div>
             <div className="form-control">
-              <label htmlFor="image" className="label">
+              <label htmlFor="Image" className="label">
                 <span className="label-text text-white font-bold">
                   Profile Picture
                 </span>
               </label>
               <input
+                key={profilePic || ""}
                 id="Image"
                 type="file"
                 onChange={picChange}
