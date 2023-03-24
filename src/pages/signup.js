@@ -123,6 +123,7 @@ export const Signup = () => {
                 <span className="label-text text-white">Username</span>
               </label>
               <input
+                pattern="/^\S*$/"
                 minLength="6"
                 required
                 id="username"
