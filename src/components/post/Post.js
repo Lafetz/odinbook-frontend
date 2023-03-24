@@ -57,7 +57,7 @@ export const Post = ({ post, index }) => {
             {post.likedBy.length === 0 && <span></span>}
             {post.likedBy.length === 1 && <span>one peson liked this</span>}
             {post.likedBy.length > 1 && (
-              <span>{post.likedby.length} people liked this</span>
+              <span>{post.likedBy.length} people liked this</span>
             )}
           </div>
 
