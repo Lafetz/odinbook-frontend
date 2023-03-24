@@ -34,9 +34,10 @@ export const Signup = () => {
       Name: name,
       email: email,
       img: profilePic ? true : false,
-      username: username,
+      username: username.replace(/\s+/g, ""),
       password: password,
     };
+
     const res = await fetch(
       "https://odinbook-backend-c0h2.onrender.com/auth/signup",
       {
@@ -123,7 +124,7 @@ export const Signup = () => {
                 <span className="label-text text-white">Username</span>
               </label>
               <input
-                pattern="/^\S*$/"
+                pattern="^[a-zA-Z0-9](.*[a-zA-Z0-9])?$"
                 minLength="6"
                 required
                 id="username"
